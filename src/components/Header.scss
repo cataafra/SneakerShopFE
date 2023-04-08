@@ -1,0 +1,23 @@
+@import "../variables";
+
+.header {
+  width: auto;
+  min-height: 10vh;
+  padding: 0 2em;
+  background-color: $afra-green;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  &__text {
+    font-size: 2em;
+    color: $afra-dark;
+  }
+
+  &__logo {
+    max-height: 5vmin;
+    margin-left: auto;
+  }
+}
