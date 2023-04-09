@@ -1,0 +1,21 @@
+@import "../variables";
+
+.sneaker-list {
+  position: relative;
+  max-width: 60vw;
+  margin: 10vh auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+
+  &__title {
+    align-self: start;
+  }
+}
+
+.add-sneaker-fab {
+  bottom: 5vh;
+  right: 20vw;
+}

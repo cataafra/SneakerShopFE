@@ -1,0 +1,26 @@
+@import "../variables";
+
+.sneaker-card {
+  position: relative;
+
+  &__price {
+    position: absolute;
+    top: 0.2em;
+    right: 0.2em;
+    z-index: 0;
+
+    font-size: 18px;
+    font-weight: 600;
+    color: $afra-white;
+
+    /* to create the circle */
+    background-color: $afra-green;
+    border-radius: 50%;
+    height: 4em;
+    width: 4em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
