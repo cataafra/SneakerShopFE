@@ -25,4 +25,4 @@ const ApiService = (url) => {
   };
 };
 
-export default ApiService(LOCAL_API_URL);
+export default ApiService(PROD_API_URL);
