@@ -1,6 +1,7 @@
 import "./App.scss";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
-import SneakerList from "./components/SneakerList";
+import NavigationBar from "./components/NavigationBar";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 
@@ -20,7 +21,8 @@ function App() {
     <ThemeProvider theme={customTheme}>
       <div className="App">
         <Header></Header>
-        <SneakerList></SneakerList>
+        <NavigationBar></NavigationBar>
+        <Footer></Footer>
       </div>
     </ThemeProvider>
   );

@@ -1,12 +1,21 @@
 import "./Header.scss";
-import logo_alt from "../images/afra_logo_alt.png";
+import logo from "../images/afra_logo.png";
+import { Box, Tabs, Tab } from "@mui/material";
+import { TabPanel, TabContext, TabList } from "@mui/lab";
+import React, { useState, useEffect } from "react";
+import ItemList from "./ItemList";
 
 const Header = () => {
+
+
   return (
-    <section className="header">
-      <h1 className="header__text">Sneaker Shop API</h1>
-      <img src={logo_alt} alt="Afra Logo" className="header__logo" />
-    </section>
+    <>
+      <section className="header">
+        <img src={logo} alt="Afra Logo" className="header__logo" />
+        <h1 className="header__text">Streetwear Store Manager</h1>
+      </section>
+      
+    </>
   );
 };
 

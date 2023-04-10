@@ -13,8 +13,10 @@ const ApiService = (url) => {
       return axios.post(url + endpoint, data).then((response) => response.data);
     },
 
-    put(endpoint, data) {
-      return axios.put(url + endpoint, data).then((response) => response.data);
+    patch(endpoint, data) {
+      return axios
+        .patch(url + endpoint, data)
+        .then((response) => response.data);
     },
 
     delete(endpoint) {

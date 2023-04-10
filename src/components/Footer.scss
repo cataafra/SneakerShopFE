@@ -1,0 +1,28 @@
+@import "../variables";
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  margin-top: auto;
+
+  &__logo {
+    max-width: 200px;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25em;
+
+    & a {
+      color: $afra-green;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import "./AddItemDialog.scss";
 import React, { useState } from "react";
 import {
   Button,
@@ -10,8 +11,9 @@ import {
 } from "@mui/material";
 
 import { Add } from "@mui/icons-material";
+import ApiService from "../api/apiService";
 
-function AddItemDialog({ createItem }) {
+function AddItemDialog({ loadItems, itemType }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     style: "",
@@ -25,12 +27,22 @@ function AddItemDialog({ createItem }) {
   const handleClose = () => setOpen(false);
   const handleSubmit = () => {
     createItem(formData);
+    loadItems();
     handleClose();
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const createItem = (itemData) => {
+    const url = `${itemType}/`;
+    try {
+      ApiService.post(url, itemData).then((response) => response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -44,10 +56,10 @@ function AddItemDialog({ createItem }) {
         style={{ position: "fixed" }}
       >
         <Add sx={{ mr: 1 }} />
-        Add new sneaker
+        Add new {itemType}
       </Fab>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Add New Sneaker</DialogTitle>
+        <DialogTitle>Add New {itemType}</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
