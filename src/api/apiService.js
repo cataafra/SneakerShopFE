@@ -28,4 +28,4 @@ const ApiService = (url) => {
   };
 };
 
-export default ApiService(PROD_API_URL);
+export default ApiService(AFRA_URL);
