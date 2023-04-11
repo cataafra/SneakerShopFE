@@ -133,16 +133,16 @@ function ItemDetailsModal({ itemId, itemType, loadItems }) {
         </DialogTitle>
         <DialogContent>{renderDetails()}</DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Close</Button>
           {editMode ? (
             <>
+              <Button onClick={() => setEditMode(false)}>Cancel</Button>
               <Button onClick={handleSaveClick} variant="contained">
                 Save
               </Button>
-              <Button onClick={() => setEditMode(false)}>Cancel</Button>
             </>
           ) : (
             <>
+              <Button onClick={handleClose}>Close</Button>
               <Button onClick={handleEditClick} startIcon={<EditIcon />}>
                 Edit
               </Button>

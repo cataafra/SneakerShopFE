@@ -42,6 +42,7 @@ function AddItemDialog({ loadItems, itemType }) {
       ApiService.post(url, itemData).then((response) => response.data);
     } catch (error) {
       console.error(error);
+      window.alert(error);
     }
   };
 
@@ -109,7 +110,9 @@ function AddItemDialog({ loadItems, itemType }) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleSubmit}>OK</Button>
+          <Button variant="contained" onClick={handleSubmit}>
+            Add
+          </Button>
         </DialogActions>
       </Dialog>
     </>
