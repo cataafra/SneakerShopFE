@@ -49,7 +49,7 @@ function ItemDetailsModal({ itemId, itemType, loadItems }) {
       );
     }
 
-    return input;
+    return input.replace(/^"(.+(?="$))"$/, "$1");
   };
 
   const renderDetails = () => {
