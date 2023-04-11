@@ -117,7 +117,7 @@ const ItemList = ({ itemType }) => {
               label="Sort By"
               onChange={handleSortByChange}
             >
-              <MenuItem value={"ID"}>ID</MenuItem>
+              <MenuItem value={"ID"}>ID Number</MenuItem>
               <MenuItem value={"PriceAsc"}>Price (ascending)</MenuItem>
               <MenuItem value={"PriceDesc"}>Price (descending)</MenuItem>
             </Select>
