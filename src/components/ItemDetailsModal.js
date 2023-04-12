@@ -32,14 +32,19 @@ function ItemDetailsModal({ itemId, itemType, loadItems }) {
     setItemDetails(itemData);
   };
 
-  const renderJSON = (input, edit = false) => {
+  const renderJSON = (input) => {
     if (typeof input == "object") {
-      if (edit) {
+      if (editMode) {
         return "Data not editable";
       }
 
       if (Array.isArray(input)) {
-        return <div>{input.map((e) => renderJSON(e))}</div>;
+        return (
+          <div>
+            <h3>Total of: {input.length}</h3>
+            {input.map((e) => renderJSON(e))}
+          </div>
+        );
       }
 
       return (
@@ -69,7 +74,7 @@ function ItemDetailsModal({ itemId, itemType, loadItems }) {
             </h3>
             {editMode ? (
               <TextField
-                defaultValue={renderJSON(itemDetails[key], 1)}
+                defaultValue={renderJSON(itemDetails[key])}
                 fullWidth
                 onChange={(e) =>
                   setItemDetails((prevState) => ({
