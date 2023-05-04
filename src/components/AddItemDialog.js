@@ -22,10 +22,35 @@ function AddItemDialog({ loadItems, itemType }) {
     brand: 0,
     size: 0,
   });
+  const [errors, setErrors] = useState({});
 
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setErrors({});
+  };
+
   const handleSubmit = () => {
+    let formErrors = {};
+    if (formData.style.trim() === "") {
+      formErrors.style = true;
+    }
+    if (formData.price <= 0) {
+      formErrors.price = true;
+    }
+    if (formData.quantity <= 0) {
+      formErrors.quantity = true;
+    }
+    if (formData.style.trim() === "" || isNaN(formData.size)) {
+      formErrors.size = true;
+    }
+    if (formData.style.trim() === "" || isNaN(formData.brand)) {
+      formErrors.brand = true;
+    }
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
+    }
     createItem(formData);
     loadItems();
     handleClose();
@@ -34,6 +59,7 @@ function AddItemDialog({ loadItems, itemType }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: false }));
   };
 
   const createItem = (itemData) => {
@@ -70,6 +96,9 @@ function AddItemDialog({ loadItems, itemType }) {
             fullWidth
             value={formData.style}
             onChange={handleChange}
+            error={errors.style}
+            helperText={errors.style ? "Style field cannot be empty" : ""}
+            className={errors.style ? "error-field" : ""}
           />
           <TextField
             type="number"
@@ -79,6 +108,9 @@ function AddItemDialog({ loadItems, itemType }) {
             fullWidth
             value={formData.price}
             onChange={handleChange}
+            error={errors.price}
+            helperText={errors.price ? "Price must be a positive number" : ""}
+            className={errors.price ? "error-field" : ""}
           />
           <TextField
             type="number"
@@ -88,6 +120,11 @@ function AddItemDialog({ loadItems, itemType }) {
             fullWidth
             value={formData.quantity}
             onChange={handleChange}
+            error={errors.quantity}
+            helperText={
+              errors.quantity ? "Quantity must be a positive number" : ""
+            }
+            className={errors.quantity ? "error-field" : ""}
           />
           <TextField
             type="brand"
@@ -97,6 +134,9 @@ function AddItemDialog({ loadItems, itemType }) {
             fullWidth
             value={formData.brand}
             onChange={handleChange}
+            error={errors.brand}
+            helperText={errors.brand ? "Brand must be an ID" : ""}
+            className={errors.brand ? "error-field" : ""}
           />
           <TextField
             type="size"
@@ -106,6 +146,9 @@ function AddItemDialog({ loadItems, itemType }) {
             fullWidth
             value={formData.size}
             onChange={handleChange}
+            error={errors.size}
+            helperText={errors.size ? "Size must be a positive number" : ""}
+            className={errors.size ? "error-field" : ""}
           />
         </DialogContent>
         <DialogActions>

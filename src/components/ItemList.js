@@ -3,21 +3,17 @@ import React, { useState, useEffect, useCallback } from "react";
 import ApiService from "../api/apiService";
 import {
   Grid,
-  IconButton,
   TextField,
   FormControl,
   InputLabel,
   Select,
   MenuItem,
 } from "@mui/material";
-import {
-  NavigateBefore,
-  NavigateNext,
-  SentimentDissatisfied,
-} from "@mui/icons-material/";
+import { SentimentDissatisfied } from "@mui/icons-material/";
 
 import ItemCard from "./ItemCard";
 import AddItemDialog from "./AddItemDialog";
+import Pagination from "./Pagination";
 
 const ItemList = ({ itemType }) => {
   const [items, setItems] = useState([]);
@@ -27,6 +23,7 @@ const ItemList = ({ itemType }) => {
   const [prevPageUrl, setPrevPageUrl] = useState(null);
   const [minPrice, setMinPrice] = useState(null);
   const [sortBy, setSortBy] = useState("ID");
+  const [lastPage, setLastPage] = useState(0);
 
   const loadItems = useCallback(
     async (page = 1) => {
@@ -41,6 +38,11 @@ const ItemList = ({ itemType }) => {
         setCurrPageUrl(url);
         setItems(response.results);
         setCount(response.count);
+        setLastPage(
+          response.count % 12 === 0
+            ? (response.count * 1.0) / 12
+            : parseInt((response.count * 1.0) / 12 + 1)
+        );
       } catch (error) {
         console.error(error);
       }
@@ -60,24 +62,13 @@ const ItemList = ({ itemType }) => {
     }
   }, [items, sortBy]);
 
-  useEffect(() => {
-    sortItems();
-  }, [sortItems]);
-
-  const handleNextClick = () => {
-    loadItems(getPageNumber(nextPageUrl));
-  };
-
-  const handlePrevClick = () => {
-    loadItems(getPageNumber(prevPageUrl));
-  };
-
   const handleMinPriceChange = (event) => {
     setMinPrice(event.target.value ? parseInt(event.target.value) : null);
   };
 
   const handleSortByChange = (event) => {
     setSortBy(event.target.value ? event.target.value : null);
+    sortItems();
   };
 
   const getPageNumber = (url) => {
@@ -137,15 +128,11 @@ const ItemList = ({ itemType }) => {
               </Grid>
             ))}
           </Grid>
-          <nav className="pagination">
-            <IconButton onClick={handlePrevClick} disabled={!prevPageUrl}>
-              <NavigateBefore />
-            </IconButton>
-            {getPageNumber(currPageurl)}
-            <IconButton onClick={handleNextClick} disabled={!nextPageUrl}>
-              <NavigateNext />
-            </IconButton>
-          </nav>
+          <Pagination
+            onPageChange={loadItems}
+            currentPage={getPageNumber(currPageurl)}
+            totalPages={lastPage}
+          />
         </>
       ) : (
         <section
