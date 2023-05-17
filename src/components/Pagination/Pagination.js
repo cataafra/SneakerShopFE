@@ -4,38 +4,29 @@ import { LastPage, NavigateBefore, NavigateNext } from "@mui/icons-material/";
 const Pagination = ({
   currentPage = 10,
   totalPages = 100,
-  onPageChange = () => {},
-}) => {
+                      onPageChange = () => {},
+                    }) => {
   const pageNumbers = [];
-  if (totalPages <= 15) {
+  if (totalPages <= 7) {
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(i);
     }
   } else {
-    const leftBoundary = Math.max(currentPage - 5, 5);
-    const rightBoundary = Math.min(currentPage + 5, totalPages - 5);
-    console.log("left: ", leftBoundary, "right: ", rightBoundary);
-
-    for (let i = 1; i < 6; i++) {
-      pageNumbers.push(i);
-    }
-
-    if (leftBoundary >= 5) {
+    const leftBoundary = Math.max(currentPage - 2, 2);
+    const rightBoundary = Math.min(currentPage + 2, totalPages - 1);
+    pageNumbers.push(1);
+    if (leftBoundary > 2) {
       pageNumbers.push("...");
     }
     for (let i = leftBoundary; i <= rightBoundary; i++) {
       pageNumbers.push(i);
     }
-    if (rightBoundary < totalPages - 5) {
+    if (rightBoundary < totalPages - 1) {
       pageNumbers.push("...");
     }
-
-    for (let i = totalPages - 4; i <= totalPages; i++) {
-      pageNumbers.push(i);
-    }
+    pageNumbers.push(totalPages);
   }
 
-  console.log("page numbers: ", ...pageNumbers);
 
   return (
     <div className="pagination">
@@ -52,7 +43,6 @@ const Pagination = ({
         return (
           <Button
             key={page}
-            sx={{ borderRadius: "50%", width: "72px", height: "72px" }}
             variant={currentPage === page ? "contained" : "text"}
             onClick={() => onPageChange(page)}
           >

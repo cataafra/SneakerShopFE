@@ -1,6 +1,6 @@
 import "./ItemCard.scss";
 import { Card, CardContent, CardActions, Typography } from "@mui/material";
-import ItemDetailsModal from "./ItemDetailsModal";
+import ItemDetailsModal from "../ItemDetailsModal/ItemDetailsModal";
 
 const ItemCard = ({ item, itemType, loadItems }) => {
   return (

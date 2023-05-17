@@ -1,8 +1,8 @@
-import "./Header.scss";
+import "../Header/Header.scss";
 import { Box, Tab, Tabs } from "@mui/material";
 import { TabPanel, TabContext, TabList } from "@mui/lab";
 import React, { useState, useEffect } from "react";
-import ItemList from "./ItemList";
+import ItemList from "../ItemList/ItemList";
 
 const NavigationBar = () => {
   const [value, setValue] = useState("1");

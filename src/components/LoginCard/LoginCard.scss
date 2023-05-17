@@ -1,0 +1,18 @@
+@import "../../variables";
+
+.register-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  &__title,
+  Button,
+  a {
+    align-self: center;
+  }
+
+  Button {
+    margin-top: 1em;
+  }
+}

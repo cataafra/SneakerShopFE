@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import ApiService from "../api/apiService";
+import ApiService from "../../api/apiService";
 
 function ItemDetailsModal({ itemId, itemType, loadItems }) {
   const [open, setOpen] = useState(false);

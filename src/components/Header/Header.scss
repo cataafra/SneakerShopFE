@@ -1,4 +1,4 @@
-@import "../variables";
+@import "../../variables";
 
 .header {
   width: auto;
@@ -11,6 +11,20 @@
   align-items: center;
   justify-content: center;
 
+  &__utility-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+  }
+
+  &__auth-buttons {
+    justify-self: end;
+  }
+
+  &__username {
+    justify-self: end;
+  }
+
   &__text {
     font-size: 2em;
     color: $afra-dark;
@@ -18,5 +32,6 @@
 
   &__logo {
     max-height: 5vmin;
+    justify-self: center;
   }
 }

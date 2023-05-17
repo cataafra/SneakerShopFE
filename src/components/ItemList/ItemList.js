@@ -1,6 +1,6 @@
 import "./ItemList.scss";
 import React, { useState, useEffect, useCallback } from "react";
-import ApiService from "../api/apiService";
+import ApiService from "../../api/apiService";
 import {
   Grid,
   TextField,
@@ -11,9 +11,9 @@ import {
 } from "@mui/material";
 import { SentimentDissatisfied } from "@mui/icons-material/";
 
-import ItemCard from "./ItemCard";
-import AddItemDialog from "./AddItemDialog";
-import Pagination from "./Pagination";
+import ItemCard from "../ItemCard/ItemCard";
+import AddItemDialog from "../AddItemDialog/AddItemDialog";
+import Pagination from "../Pagination/Pagination";
 
 const ItemList = ({ itemType }) => {
   const [items, setItems] = useState([]);

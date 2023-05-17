@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 
 import { Add } from "@mui/icons-material";
-import ApiService from "../api/apiService";
+import ApiService from "../../api/apiService";
 
 function AddItemDialog({ loadItems, itemType }) {
   const [open, setOpen] = useState(false);

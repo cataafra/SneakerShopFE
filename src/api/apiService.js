@@ -7,10 +7,12 @@ const AFRA_URL = "https://api.afrastudios.xyz/";
 
 const ApiService = (url) => {
   return {
-    get(endpoint, token) {
+    get(endpoint) {
       const headers = {
         "Content-Type": "application/json",
       };
+
+      const token = localStorage.getItem("token");
 
       if (token) {
         headers.Authorization = `Bearer ${token}`;
@@ -21,10 +23,12 @@ const ApiService = (url) => {
         .then((response) => response.data);
     },
 
-    post(endpoint, data, token) {
+    post(endpoint, data) {
       const headers = {
         "Content-Type": "application/json",
       };
+
+      const token = localStorage.getItem("token");
 
       if (token) {
         headers.Authorization = `Bearer ${token}`;
@@ -35,10 +39,12 @@ const ApiService = (url) => {
         .then((response) => response.data);
     },
 
-    patch(endpoint, data, token) {
+    patch(endpoint, data) {
       const headers = {
         "Content-Type": "application/json",
       };
+
+      const token = localStorage.getItem("token");
 
       if (token) {
         headers.Authorization = `Bearer ${token}`;
@@ -49,10 +55,12 @@ const ApiService = (url) => {
         .then((response) => response.data);
     },
 
-    delete(endpoint, token) {
+    delete(endpoint) {
       const headers = {
         "Content-Type": "application/json",
       };
+
+      const token = localStorage.getItem("token");
 
       if (token) {
         headers.Authorization = `Bearer ${token}`;
