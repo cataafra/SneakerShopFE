@@ -7,25 +7,32 @@ const Pagination = ({
   onPageChange = () => {},
 }) => {
   const pageNumbers = [];
-  if (totalPages <= 7) {
+  if (totalPages <= 15) {
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(i);
     }
   } else {
-    const leftBoundary = Math.max(currentPage - 2, 2);
-    const rightBoundary = Math.min(currentPage + 2, totalPages - 1);
+    const leftBoundary = Math.max(currentPage - 5, 5);
+    const rightBoundary = Math.min(currentPage + 5, totalPages - 5);
     console.log("left: ", leftBoundary, "right: ", rightBoundary);
-    pageNumbers.push(1);
-    if (leftBoundary > 2) {
+
+    for (let i = 1; i < 6; i++) {
+      pageNumbers.push(i);
+    }
+
+    if (leftBoundary >= 5) {
       pageNumbers.push("...");
     }
     for (let i = leftBoundary; i <= rightBoundary; i++) {
       pageNumbers.push(i);
     }
-    if (rightBoundary < totalPages - 1) {
+    if (rightBoundary < totalPages - 5) {
       pageNumbers.push("...");
     }
-    pageNumbers.push(totalPages);
+
+    for (let i = totalPages - 4; i <= totalPages; i++) {
+      pageNumbers.push(i);
+    }
   }
 
   console.log("page numbers: ", ...pageNumbers);
@@ -45,7 +52,7 @@ const Pagination = ({
         return (
           <Button
             key={page}
-            s
+            sx={{ borderRadius: "50%", width: "72px", height: "72px" }}
             variant={currentPage === page ? "contained" : "text"}
             onClick={() => onPageChange(page)}
           >
