@@ -10,8 +10,12 @@ const ApiService = (url) => {
     get(endpoint, token) {
       const headers = {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       };
+
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
       return axios
         .get(url + endpoint, { headers })
         .then((response) => response.data);
@@ -20,8 +24,12 @@ const ApiService = (url) => {
     post(endpoint, data, token) {
       const headers = {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       };
+
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
       return axios
         .post(url + endpoint, data, { headers })
         .then((response) => response.data);
@@ -30,8 +38,12 @@ const ApiService = (url) => {
     patch(endpoint, data, token) {
       const headers = {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       };
+
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
       return axios
         .patch(url + endpoint, data, { headers })
         .then((response) => response.data);
@@ -40,8 +52,12 @@ const ApiService = (url) => {
     delete(endpoint, token) {
       const headers = {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       };
+
+      if (token) {
+        headers.Authorization = `Bearer ${token}`;
+      }
+
       return axios
         .delete(url + endpoint, { headers })
         .then((response) => response.data);

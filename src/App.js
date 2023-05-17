@@ -1,9 +1,10 @@
 import "./App.scss";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import NavigationBar from "./components/NavigationBar";
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
+
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 const customTheme = createTheme({
   palette: {
@@ -20,9 +21,11 @@ function App() {
   return (
     <ThemeProvider theme={customTheme}>
       <div className="App">
-        <Header></Header>
-        <NavigationBar></NavigationBar>
-        <Footer></Footer>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" index element={<Home />} />
+          </Routes>
+        </BrowserRouter>
       </div>
     </ThemeProvider>
   );

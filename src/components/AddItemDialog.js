@@ -65,7 +65,11 @@ function AddItemDialog({ loadItems, itemType }) {
   const createItem = (itemData) => {
     const url = `${itemType}/`;
     try {
-      ApiService.post(url, itemData).then((response) => response.data);
+      ApiService.post(
+        url,
+        itemData,
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjg1NjA4ODExLCJpYXQiOjE2ODQzMTI4MTEsImp0aSI6ImNlNjY0ZGVmMmNkYTQ5YTRiMmJjNTEyYmVmZWIyZWRiIiwidXNlcl9pZCI6MX0.3PfCU-iosDppA9-QMIK9-kLecZwc8xV0wUPOgevoPP0"
+      ).then((response) => response.data);
     } catch (error) {
       console.error(error);
       window.alert(error);

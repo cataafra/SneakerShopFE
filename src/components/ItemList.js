@@ -19,8 +19,6 @@ const ItemList = ({ itemType }) => {
   const [items, setItems] = useState([]);
   const [count, setCount] = useState(0);
   const [currPageurl, setCurrPageUrl] = useState(null);
-  const [nextPageUrl, setNextPageUrl] = useState(null);
-  const [prevPageUrl, setPrevPageUrl] = useState(null);
   const [minPrice, setMinPrice] = useState(null);
   const [sortBy, setSortBy] = useState("ID");
   const [lastPage, setLastPage] = useState(0);
@@ -33,8 +31,6 @@ const ItemList = ({ itemType }) => {
       }
       try {
         const response = await ApiService.get(url);
-        setNextPageUrl(response.next);
-        setPrevPageUrl(response.previous);
         setCurrPageUrl(url);
         setItems(response.results);
         setCount(response.count);
